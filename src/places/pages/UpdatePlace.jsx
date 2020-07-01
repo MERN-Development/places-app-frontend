@@ -44,7 +44,21 @@ const UpdatePlace = (props) => {
 
   const identifiedPlace = DUMMY_PLACES.find((place) => place.id === placeId);
 
-  const [formState, inputHandler] = useForm(
+  const [formState, inputHandler, setFormData] = useForm(
+    {
+      title: {
+        value: "",
+        isValid: false,
+      },
+      description: {
+        value: "",
+        isValid: false,
+      },
+    },
+    false
+  );
+
+  setFormData(
     {
       title: {
         value: identifiedPlace.title,
